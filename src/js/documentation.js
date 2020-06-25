@@ -1,4 +1,4 @@
-var documentationFileToTitle = {}, documentation =
+let documentationFileToTitle = {}, documentation =
 {
   "PaperMC Documentation": {
     "file": "index.html"
@@ -35,7 +35,7 @@ var documentationFileToTitle = {}, documentation =
   }
 };
 
-function addSection(section) {
+addSection = section => {
   let html = "";
   for (const subsection in section) {
     const length = Object.keys(section[subsection]).length;
@@ -72,7 +72,7 @@ function addSection(section) {
   return html;
 }
 
-function loadDocumentation(file) {
+loadDocumentation = file => {
   container = document.querySelector("#content>.container");
   
   // Loader
@@ -132,7 +132,7 @@ function loadDocumentation(file) {
   });
 }
 
-let anchorClickHandler = function(e) {
+let anchorClickHandler = e => {
   if (this.hash.length == 0) {
       window.scroll({ 
         top: 0,
@@ -189,7 +189,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadDocumentation("index.html");
 });
 
-window.addEventListener("hashchange", function(e) {
+window.addEventListener("hashchange", e => {
   const hash = location.hash.substring(1), hashFile = hash.toLowerCase().replace(/_/g, ' ');
   for (file in documentationFileToTitle)
     if (hashFile == documentationFileToTitle[file].toLowerCase()) {

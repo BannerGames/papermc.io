@@ -25,16 +25,15 @@ const downloads = {
     }
 };
 
-function jenkinsFetch(job, path) {
+jenkinsFetch = (job, path) => {
     return window.fetch("/ci/job/" + job + path).then((response) => {
-        if (response.status > 400)
-            return null;
+        if (response.status > 400) return null;
 
         return response.json();
     });
 }
 
-function escapeHTML(str) {
+escapeHTML = str => {
     return str.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;").replace(/'/g, "&#039;");
 }
 
